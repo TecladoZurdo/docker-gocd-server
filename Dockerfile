@@ -100,6 +100,9 @@ RUN \
     mv /tmp/libz/usr/lib/libz.so* /usr/glibc-compat/lib && \
     apk del --purge .build-deps glibc-i18n && \
     rm -rf /tmp/*.apk /tmp/gcc /tmp/gcc-libs.tar.xz /tmp/libz /tmp/libz.tar.xz /var/cache/apk/* && \
+    apk add tzdata && \
+    cp /usr/share/zoneinfo/America/Guayaquil /etc/localtime && \
+    apk del tzdata && \
   # end installing adoptopenjre  && \
   curl --fail --location --silent --show-error 'https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14.0.2%2B12/OpenJDK14U-jre_x64_linux_hotspot_14.0.2_12.tar.gz' --output /tmp/jre.tar.gz && \
   mkdir -p /gocd-jre && \
