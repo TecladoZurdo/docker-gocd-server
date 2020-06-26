@@ -100,6 +100,9 @@ RUN \
     mv /tmp/libz/usr/lib/libz.so* /usr/glibc-compat/lib && \
     apk del --purge .build-deps glibc-i18n && \
     rm -rf /tmp/*.apk /tmp/gcc /tmp/gcc-libs.tar.xz /tmp/libz /tmp/libz.tar.xz /var/cache/apk/* && \
+    apk add tzdata && \
+    cp /usr/share/zoneinfo/America/Guayaquil /etc/localtime && \
+    apk del tzdata && \
   # end installing adoptopenjre  && \
   curl --fail --location --silent --show-error 'https://github.com/AdoptOpenJDK/openjdk13-binaries/releases/download/jdk-13.0.2%2B8/OpenJDK13U-jre_x64_linux_hotspot_13.0.2_8.tar.gz' --output /tmp/jre.tar.gz && \
   mkdir -p /gocd-jre && \
